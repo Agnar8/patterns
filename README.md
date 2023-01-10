@@ -1,2 +1,3 @@
 # patterns
-Patterns by php
+Patterns example by php 
+
