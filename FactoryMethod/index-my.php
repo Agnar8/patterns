@@ -4,6 +4,7 @@ abstract class Code
 {
     //factory method
     abstract public function getDeveloper();
+
     public function writeCode()
     {
         $developer = $this->getDeveloper();
