@@ -2,14 +2,13 @@
 
 abstract class Code
 {
+    //factory method
+    abstract public function getDeveloper();
     public function writeCode()
     {
         $developer = $this->getDeveloper();
         echo $developer->makeCode() . "\n";
     }
-
-    //factory method
-    abstract public function getDeveloper();
 }
 
 class PhpCode extends Code
