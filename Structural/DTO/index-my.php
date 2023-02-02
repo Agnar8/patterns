@@ -19,7 +19,8 @@ class OrderDTO
     public $id;
     public $type;
 
-    // вопрос, можно ли сюда включать валидацию данных?
+    // валидацию или любую другую логику, обработку сюда включать нельзя
+    // если с логикой - это уже будет паттерн VO value object
     public function __construct(array $order)
     {
         $this->id = $order['order_id'];
