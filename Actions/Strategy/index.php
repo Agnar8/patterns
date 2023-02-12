@@ -31,16 +31,6 @@ class shoppingCart
         $this->amount = $amount;
     }
 
-    public function getAmount()
-    {
-        return $this->amount;
-    }
-
-    public function setAmount($amount = 0)
-    {
-        $this->amount = $amount;
-    }
-
     public function payAmount()
     {
         if ($this->amount >= 500) {

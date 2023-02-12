@@ -1,37 +1,47 @@
 <?php
 
-class Factory
+interface Door
 {
-    public static function build($type)
+    public function getWidth(): float;
+
+    public function getHeight(): float;
+}
+
+class WoodenDoor implements Door
+{
+    protected $width;
+    protected $height;
+
+    public function __construct(float $width, float $height)
     {
-        $class = "Format" . $type;
-        if (!class_exists($class)) {
-            throw new Exception("Missing format class.");
-        }
-        return new $class;
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    public function getWidth(): float
+    {
+        return $this->width;
+    }
+
+    public function getHeight(): float
+    {
+        return $this->height;
     }
 }
 
-interface FormatInterface
+class DoorFactory
 {
+    public static function makeDoor($width, $height): Door
+    {
+        /**
+         * тут еще должна быть какаято логика, чтобы оправдать создание фабрики
+         * иначе в ней нет смысла.
+         * Суть вынести повторяющийся код в отдельный класс
+         */
+        return new WoodenDoor($width, $height);
+    }
 }
 
-class FormatString implements FormatInterface
-{
-}
-
-class FormatNumber implements FormatInterface
-{
-}
-
-try {
-    $string = Factory::build("String");
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
-
-try {
-    $number = Factory::build("Number");
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
+$door = DoorFactory::makeDoor(100, 200);
+echo 'Width: ' . $door->getWidth() . "\n";
+echo 'Height: ' . $door->getHeight() . "\n";
