@@ -21,7 +21,7 @@ class SerializeReport
     }
 }
 
-// массов отчетов
+// массив отчетов
 $reports = [
     new JsonReport(),
     new SerializeReport()
