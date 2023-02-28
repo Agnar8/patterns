@@ -1,38 +1,46 @@
 <?php
 
-class Product {
+class Product
+{
     private $name;
     private $price;
 
-    public function __construct($name, $price) {
+    public function __construct($name, $price)
+    {
         $this->name = $name;
         $this->price = $price;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getPrice() {
+    public function getPrice()
+    {
         return $this->price;
     }
 }
 
-class ProductBuilder {
+class ProductBuilder
+{
     private $name;
     private $price;
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
         return $this;
     }
 
-    public function setPrice($price) {
+    public function setPrice($price)
+    {
         $this->price = $price;
         return $this;
     }
 
-    public function build() {
+    public function build()
+    {
         return new Product($this->name, $this->price);
     }
 }
