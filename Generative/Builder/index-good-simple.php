@@ -30,12 +30,14 @@ class ProductBuilder
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     public function setPrice($price)
     {
         $this->price = $price;
+
         return $this;
     }
 

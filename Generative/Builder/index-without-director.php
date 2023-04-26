@@ -5,23 +5,23 @@
  */
 class Pizza
 {
-    private $_pastry = "";
-    private $_sauce = "";
-    private $_garniture = "";
+    private $pastry = "";
+    private $sauce = "";
+    private $filling = "";
 
     public function setPastry($pastry)
     {
-        $this->_pastry = $pastry;
+        $this->pastry = $pastry;
     }
 
     public function setSauce($sauce)
     {
-        $this->_sauce = $sauce;
+        $this->sauce = $sauce;
     }
 
-    public function setGarniture($garniture)
+    public function setFilling($filling)
     {
-        $this->_garniture = $garniture;
+        $this->filling = $filling;
     }
 }
 
@@ -30,13 +30,13 @@ class Pizza
  */
 abstract class BuilderPizza
 {
+    protected $_pizza;
+
     public function __construct()
     {
         $this->_pizza = new Pizza ();
         $this->constructPizza();
     }
-
-    protected $_pizza;
 
     public function getPizza()
     {
@@ -47,14 +47,14 @@ abstract class BuilderPizza
     {
         $this->buildPastry();
         $this->buildSauce();
-        $this->buildGarniture();
+        $this->buildFilling();
     }
 
     abstract public function buildPastry();
 
     abstract public function buildSauce();
 
-    abstract public function buildGarniture();
+    abstract public function buildFilling();
 
 }
 
@@ -73,9 +73,9 @@ class BuilderPizzaHawaii extends BuilderPizza
         $this->_pizza->setSauce("soft");
     }
 
-    public function buildGarniture()
+    public function buildFilling()
     {
-        $this->_pizza->setGarniture("jambon+ananas");
+        $this->_pizza->setFilling("jambon+ananas");
     }
 
 }
@@ -95,9 +95,9 @@ class BuilderPizzaSpicy extends BuilderPizza
         $this->_pizza->setSauce("hot");
     }
 
-    public function buildGarniture()
+    public function buildFilling()
     {
-        $this->_pizza->setGarniture("pepperoni+salami");
+        $this->_pizza->setFilling("pepperoni+salami");
     }
 
 }
@@ -107,7 +107,7 @@ $pizza = $builderPizzaHawaii->getPizza();
 
 print_r($pizza);
 
-$builderPizzaPiquante = new BuilderPizzaSpicy();
-$pizza = $builderPizzaPiquante->getPizza();
+$builderPizzaPiquant = new BuilderPizzaSpicy();
+$pizza = $builderPizzaPiquant->getPizza();
 
 print_r($pizza);
